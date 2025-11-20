@@ -28,7 +28,7 @@ else
   creds="$dcr --no-deps -T relay credentials"
   $creds generate --stdout >"$RELAY_CREDENTIALS_JSON".tmp
   mv "$RELAY_CREDENTIALS_JSON".tmp "$RELAY_CREDENTIALS_JSON"
-  if ! grep -q Credentials <($creds show); then
+  if ! grep -q id <($creds show); then
     # Let's fail early if creds failed, to make debugging easier.
     echo "Failed to create relay credentials in $RELAY_CREDENTIALS_JSON."
     echo "--- credentials.json v ---------------------------------------"
